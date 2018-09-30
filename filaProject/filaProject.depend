@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1538343589 source:c:\users\amand\downloads\engenharia da computaria materiais\ernani\filaproject\teste.c
+	<stdio.h>
+	<stdlib.h>
+	"fila.h"
+
