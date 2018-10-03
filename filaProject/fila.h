@@ -1,9 +1,11 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "pokemon.h"
+
 #ifndef FILA_H
 #define FILA_H
 
 int tam;
-//int menu(void);
-//void opcao(node *FILA, int op);
 
 // STRUCT NODE
 // criamos uma struct Nó para criar os nós da nossa estrutura de dados
@@ -11,7 +13,7 @@ int tam;
 // e um ponteiro do próprio tipo apontando para o proximo nó da estrutura
 // caso aponte NULL, o nó é o último da fila ou a fila está vazia
 struct Node{
-	int num;
+	pokemao pokemon;
 	struct Node *prox;
 };
 typedef struct Node node;
@@ -44,8 +46,15 @@ node *aloca()
 		printf("Sem memoria disponivel!\n");
 		exit(1);
 	}else{
-		printf("Novo elemento: "); scanf("%d", &novo->num);
-		return novo;
+        printf("Novo pokemon \n");
+        (*novo).pokemon.nome = (char*) malloc(sizeof(char) * 30);
+        (*novo).pokemon.tipo = (char*) malloc(sizeof(char) * 30);
+
+        printf("Nome \n"); scanf(" %s", &((*novo).pokemon.nome));
+        printf("CP \n"); scanf(" %5d", &((*novo).pokemon.cp));
+        printf("Tipo \n"); scanf(" %s", &((*novo).pokemon.tipo));
+
+	 	return novo;
 	}
 }
 
@@ -116,14 +125,17 @@ void exibe(node *FILA)
 		return ;
 	}
 
-	node *tmp;
-	tmp = FILA->prox;
+	node *tmp = FILA->prox;
 	printf("Fila :");
-	while( tmp != NULL){
-		printf("%5d", tmp->num);
-		tmp = tmp->prox;
-	}
-	printf("\n        ");
+    while( tmp != NULL){
+        //while()
+        printf("%d", ((*tmp).pokemon.nome));
+        printf("da erro aqui2\n");
+        tmp = tmp->prox;
+    }
+    printf("\n        ");
+
+
 	int count;
 	for(count=0 ; count < tam ; count++)
 		printf("  ^  ");
