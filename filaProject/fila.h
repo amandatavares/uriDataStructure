@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "pokemon.h"
 
 #ifndef FILA_H
@@ -13,7 +14,7 @@ int tam;
 // e um ponteiro do próprio tipo apontando para o proximo nó da estrutura
 // caso aponte NULL, o nó é o último da fila ou a fila está vazia
 struct Node{
-	pokemao pokemon;
+	char pokemon[30];
 	struct Node *prox;
 };
 typedef struct Node node;
@@ -21,7 +22,7 @@ typedef struct Node node;
 void inicia(node *FILA);
 int vazia(node *FILA);
 node *aloca();
-void insere(node *FILA);
+void insere(node *FILA, char* pokemon);
 node *retira(node *FILA);
 void exibe(node *FILA);
 
@@ -41,21 +42,13 @@ int vazia(node *FILA)
 // aloca memória para cada nó da nossa fila
 node *aloca()
 {
-	node *novo=(node *) malloc(sizeof(node));
+	node *novo =(node *) malloc(sizeof(node));
 	if(!novo){
 		printf("Sem memoria disponivel!\n");
 		exit(1);
-	}else{
-        printf("Novo pokemon \n");
-        (*novo).pokemon.nome = (char*) malloc(sizeof(char) * 30);
-        (*novo).pokemon.tipo = (char*) malloc(sizeof(char) * 30);
-
-        printf("Nome \n"); scanf(" %s", &((*novo).pokemon.nome));
-        printf("CP \n"); scanf(" %5d", &((*novo).pokemon.cp));
-        printf("Tipo \n"); scanf(" %s", &((*novo).pokemon.tipo));
-
-	 	return novo;
 	}
+    return novo;
+
 }
 
 // FILA CRUD
@@ -73,9 +66,10 @@ void inicia(node *FILA)
 // começa no primeiro elemento, que está em "FILA->prox". Se "tmp->prox" apontar para NULL, o ponteiro aponta para o último da fila.
 // Senao, devemos seguir adiante com o ponteiro (tmp = tmp->prox) até acharmos o último elemento.
 // Achando, colocamos lá o novo nó, "novo".
-void insere(node *FILA)
+void insere(node *FILA, char* pokemon)
 {
 	node *novo=aloca();
+    strcpy (novo->pokemon, pokemon);
 	novo->prox = NULL;
 
 	if(vazia(FILA))
@@ -126,23 +120,24 @@ void exibe(node *FILA)
 	}
 
 	node *tmp = FILA->prox;
-	printf("Fila :");
-    while( tmp != NULL){
-        //while()
-        printf("%d", ((*tmp).pokemon.nome));
-        printf("da erro aqui2\n");
-        tmp = tmp->prox;
-    }
-    printf("\n        ");
+	int count = 0;
 
+	printf("Fila :\n");
 
-	int count;
-	for(count=0 ; count < tam ; count++)
-		printf("  ^  ");
-	printf("\nOrdem:");
-	for(count=0 ; count < tam ; count++)
-		printf("%5d", count+1);
+    while(tmp != NULL){
 
+        printf("%d - ", count+1);
+		printf("%s", tmp->pokemon);
+        printf("\n");
+        count++;
+		tmp = tmp->prox;
+	}
+
+    //free(tmp);
+
+//	for(count=0 ; count < tam ; count++)
+//		printf("  ^  ");
+//	printf("\nOrdem:");
 
 	printf("\n\n");
 }

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "fila.h"
+
 // MENU
 
 int menu(void);
@@ -12,54 +13,13 @@ int menu(void)
 
 	printf("Escolha a opcao\n");
 	printf("0. Sair\n");
-	printf("1. Zerar fila\n");
-	printf("2. Exibir fila\n");
-	printf("3. Adicionar Elemento na Fila\n");
-	printf("4. Retirar Elemento da Fila\n");
+	printf("1. Exibir fila\n");
+	printf("2. Adicionar Elemento na Fila\n");
+	printf("3. Retirar Elemento da Fila\n");
 	printf("Opcao: "); scanf("%d", &opt);
 
 	return opt;
 }
-
-void opcao(node *FILA, int op)
-{
-	node *tmp;
-	switch(op){
-		// sair
-		case 0:
-			free(FILA);
-			break;
-
-		// zerar a fila
-		case 1:
-			free(FILA);
-			inicia(FILA);
-			break;
-
-		// exibir a fila
-		case 2:
-			exibe(FILA);
-			break;
-
-		// adicionar elemento na fila
-		case 3:
-			insere(FILA);
-			break;
-
-		// retirar elemento da fila
-		case 4:
-			tmp= retira(FILA);
-			if(tmp != NULL){
-				printf("Retirado: %20s\n\n", (*tmp).pokemon.nome);
-				free(tmp);
-			}
-			break;
-
-		default:
-			printf("Comando invalido\n\n");
-	}
-}
-
 // main chama o menu no loop while
 // a opcao escolhida é pega em menu() e passada para opcao(), que recebe a fila e a opcao do usuário
 // opcao() possui um switch, que chama a funcao equivalente à escolha do usuário
@@ -87,3 +47,41 @@ int main(void)
 	return 0;
 	}
 }
+
+void opcao(node *FILA, int op)
+{
+	node *tmp;
+	char nomePokemon[30];
+
+	switch(op){
+		// sair
+		case 0:
+			free(FILA);
+			break;
+
+		// exibir a fila
+		case 1:
+            exibe(FILA);
+			break;
+
+		// adicionar elemento na fila
+		case 2:
+			printf("Novo pokemon \n");
+            printf("Nome \n"); scanf("%s", nomePokemon);
+			insere(FILA,nomePokemon);
+			break;
+
+		// retirar elemento da fila
+		case 3:
+            tmp = retira(FILA);
+			if(tmp != NULL){
+				printf("Retirado: %20s\n\n", tmp->pokemon);
+				free(tmp);
+			}
+			break;
+
+		default:
+			printf("Comando invalido\n\n");
+	}
+}
+

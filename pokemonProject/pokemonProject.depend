@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1539019860 source:c:\users\amand\downloads\engenharia da computaria materiais\ernani\pokemonproject\main.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+
+1539020001 c:\users\amand\downloads\engenharia da computaria materiais\ernani\pokemonproject\lista.h
+	<stdio.h>
+	<stdlib.h>
+
