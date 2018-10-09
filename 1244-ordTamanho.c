@@ -5,7 +5,7 @@
 
 void inserctionSort(char [][50], int);
 
-int main(){
+int ord(){
      int n, i, j, k;
      
      char linha[2503], palavra[50][50]; 

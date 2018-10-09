@@ -7,7 +7,7 @@
 #define TRUE  1
 #define FALSE 0
 
-int main() {
+int main(void) {
 	int  Ncasos= 0, Malunos = 0, c, d, k, aux, qtd; // n = num de casos, M = num de alunos, aux
 	int vAntes[1000], vDepois[1000];
 	char trocas;

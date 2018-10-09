@@ -15,7 +15,7 @@ int compara(const void *p1, const void *p2)
             return -1;
 }
 
-int main ()
+int marmore ()
 {
     int N, Q, cont, vResp, c, *p, caso = 0, b;
 

@@ -4,12 +4,6 @@
 #ifndef LISTA_H_INCLUDED
 #define LISTA_H_INCLUDED
 
-//struct Node{
-//	char pokemon[30];
-//	struct Node *prox;
-//};
-//typedef struct Node node;
-
 struct Pokemon {
     char nome[30];
     struct Pokemon *prox;
@@ -20,10 +14,11 @@ int tam;
 
 void inicia(pokemao *LISTA);
 pokemao *criaNo();
-void insereFim(pokemao *LISTA, char* pokemon);
+void insereInicio(pokemao *LISTA, char* pokemon);
 void exibe(pokemao *LISTA);
 void libera(pokemao *LISTA);
 pokemao *retira(pokemao *LISTA);
+char *selecionarParaBatalha(pokemao *LISTA);
 
 void inicia(pokemao *LISTA)
 {
@@ -49,7 +44,17 @@ pokemao *aloca()
 	return novo;
 
 }
+void insereInicio(pokemao *LISTA, char* pokemon)
+{
+	pokemao *novo=aloca();
+    strcpy (novo->nome, pokemon);
+	pokemao *oldHead = LISTA->prox;
 
+	LISTA->prox = novo;
+	novo->prox = oldHead;
+
+	tam++;
+}
 void insereFim(pokemao *LISTA, char* pokemon)
 {
 	pokemao *novo=aloca();
@@ -71,7 +76,7 @@ void insereFim(pokemao *LISTA, char* pokemon)
 
 void exibe(pokemao *LISTA)
 {
-	system("clear");
+    system("clear");
 	if(vazia(LISTA)){
 		printf("PokeStorage vazio!\n\n");
 		return ;
@@ -79,20 +84,15 @@ void exibe(pokemao *LISTA)
 
 	pokemao *tmp;
 	tmp = LISTA->prox;
-	printf("Lista:");
+	printf("Lista:\n");
+	int count = 0;
 	while( tmp != NULL){
+        printf("%d - ", count+1);
 		printf("%s", tmp->nome);
+		printf("\n");
+		count++;
 		tmp = tmp->prox;
 	}
-	printf("\n        ");
-	int count;
-	for(count=0 ; count < tam ; count++)
-		printf("  ^  ");
-	printf("\nOrdem:");
-	for(count=0 ; count < tam ; count++)
-		printf("%5d", count+1);
-
-
 	printf("\n\n");
 }
 
@@ -125,6 +125,7 @@ pokemao *retiraInicio(pokemao *LISTA)
 }
 pokemao *retira(pokemao *LISTA)
 {
+    system("clear");
 	int opt,
 		count;
 	printf("Que Pokémon, [de 1 ate %d] voce deseja retirar: ", tam);
@@ -152,5 +153,16 @@ pokemao *retira(pokemao *LISTA)
 		return NULL;
 	}
 }
+char* selecionarParaBatalha(pokemao *LISTA)
+{
+    int opt, i;
+    printf("Que Pokemon voce deseja selecionar: ");
+	scanf("%d", &opt);
 
+    pokemao *indice = LISTA;
+    for(i = 0; i < opt; i++){
+        indice = indice->prox;
+    }
+    return indice->nome;
+}
 #endif // LISTA_H_INCLUDED

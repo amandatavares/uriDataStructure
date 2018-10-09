@@ -13,7 +13,7 @@ int ordem(const void *a, const void *b)
   return strcmp(ia->num, ib->num); //comparar para ordenar
 }  
               
-int main(){
+int tele(){
     int n, i, j;
     int cont;
     numeros comp;

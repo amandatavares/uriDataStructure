@@ -1,5 +1,5 @@
 #include <stdio.h>
-int main()
+int main(void)
 {
     double a=0.0, M[12][12]; //matriz 12x12
     char T[2]; //variavel para caractere S ou M
@@ -23,5 +23,6 @@ int main()
     {
         a=a/66.0;
         printf("%.1lf\n",a); //se for media
+	}
     return 0;
 }
