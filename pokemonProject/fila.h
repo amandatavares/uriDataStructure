@@ -9,7 +9,7 @@ int tam;
 
 // STRUCT NODE
 // criamos uma struct Nó para criar os nós da nossa estrutura de dados
-// nela, existe o num, para guardar valores inseridos pelo usuário
+// nela, existe um char, para guardar os pokemons inseridos pelo usuário
 // e um ponteiro do próprio tipo apontando para o proximo nó da estrutura
 // caso aponte NULL, o nó é o último da fila ou a fila está vazia
 struct Node{

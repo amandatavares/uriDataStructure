@@ -35,6 +35,7 @@ int vazia(pokemao *LISTA)
 }
 
 pokemao *aloca()
+
 {
 	pokemao *novo=(pokemao *) malloc(sizeof(pokemao));
 	if(!novo){

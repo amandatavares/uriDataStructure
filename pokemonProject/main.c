@@ -17,8 +17,8 @@ int menu(void)
 	printf("1. Zerar lista\n");
 	printf("2. Exibir lista\n");
 	printf("3. Adicionar Pokemon\n");
-	printf("4. Escolher de onde tirar\n");
-	printf("5. Selecionar Pokemon para batalhar\n");
+	printf("4. Transferir Pokemon\n");
+	printf("5. Selecionar Pokemon para time\n");
 	printf("6. Exibir time Pokemon\n");
 	printf("7. Retirar Pokemon do time\n");
 	printf("Opcao: "); scanf("%d", &opt);
@@ -33,38 +33,49 @@ void opcao(pokemao *LISTA, node *FILA, int op)
     node *tmpNode;
 
 	switch(op){
+	    // fecha o programa
 		case 0:
 			libera(LISTA);
 			break;
 
+        // zera a lista de pokemons
 		case 1:
 			libera(LISTA);
 			inicia(LISTA);
 			break;
 
+        // exibir pokemons da Pokestorage
 		case 2:
 			exibe(LISTA);
 			break;
 
+        // adicionar pokemon a Pokestorage
 		case 3:
 		    printf("Novo pokemon \n");
             printf("Nome \n"); scanf("%s", nomePokemon);
 			insereInicio(LISTA,nomePokemon);
 			break;
 
+        // transferir (retirar) pokemon da lista
 		case 4:
             exibe(LISTA);
 			tmp= retira(LISTA);
 			printf("Transferido: %s\n\n", tmp->nome);
 			break;
+
+        // adicionar pokemon ao Time (fila)
         case 5:
             exibe(LISTA);
 			strcpy(nomePokemon,selecionarParaBatalha(LISTA));
 			insereNode(FILA, nomePokemon);
 			break;
+
+        // mostrar time (fila)
         case 6:
             exibeNode(FILA);
 			break;
+
+        // retirar pokemon do time
         case 7:
             tmpNode = retiraNode(FILA);
 			if(tmpNode != NULL){
