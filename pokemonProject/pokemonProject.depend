@@ -1,16 +1,16 @@
 # depslib dependency file v1.0
-1539200241 source:c:\users\amand\downloads\engenharia da computaria materiais\ernani\pokemonproject\main.c
+1539203841 source:c:\users\amand\downloads\engenharia da computaria materiais\ernani\pokemonproject\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"lista.h"
 	"fila.h"
 
-1539202090 c:\users\amand\downloads\engenharia da computaria materiais\ernani\pokemonproject\lista.h
+1539205690 c:\users\amand\downloads\engenharia da computaria materiais\ernani\pokemonproject\lista.h
 	<stdio.h>
 	<stdlib.h>
 
-1539198547 c:\users\amand\downloads\engenharia da computaria materiais\ernani\pokemonproject\fila.h
+1539202147 c:\users\amand\downloads\engenharia da computaria materiais\ernani\pokemonproject\fila.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

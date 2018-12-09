@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1544388071 source:c:\users\amand\downloads\engenharia da computaria materiais\ernani\arvorebinaria\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	"arvore.h"
+
+1544388075 c:\users\amand\downloads\engenharia da computaria materiais\ernani\arvorebinaria\arvore.h
+	<stdio.h>
+	<stdlib.h>
+
